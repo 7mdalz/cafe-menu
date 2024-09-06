@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Café 90s Drink Menu</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0e5d8;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid #c2b280;
+            border-radius: 10px;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+        h1 {
+            text-align: center;
+            color: #6d4c41;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        .menu-category {
+            margin-bottom: 30px;
+        }
+        .menu-category h2 {
+            background-color: #d7c5b1;
+            color: #6d4c41;
+            padding: 10px;
+            margin: 0;
+            font-size: 1.75em;
+            border: 3px solid #6d4c41;
+            border-radius: 5px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .menu-item {
+            border-bottom: 1px dashed #d7c5b1;
+            padding: 10px 0;
+        }
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        .menu-item h3 {
+            margin: 0;
+            color: #6d4c41;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .menu-item p {
+            margin: 5px 0;
+            color: #8c6e63;
+        }
+        .price {
+            float: right;
+            color: #d45d0f;
+            font-weight: bold;
+        }
+        button {
+            background-color: #d45d0f;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #c44b0f;
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            .price {
+                float: none;
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Café 90s Drink Menu</h1>
+
+        <div class="menu-category">
+            <h2>Coffee</h2>
+            <div class="menu-item">
+                <h3>Espresso <span class="price">$3.00</span></h3>
+                <p>Rich and bold espresso shot to kickstart your day.</p>
+                <button onclick="sendEmail('Espresso')">Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Caffè Latte <span class="price">$4.50</span></h3>
+                <p>Smooth espresso combined with steamed milk and a touch of foam.</p>
+                <button onclick="sendEmail('Caffè Latte')">Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Caramel Macchiato <span class="price">$5.00</span></h3>
+                <p>A delicious blend of espresso, milk, and caramel syrup.</p>
+                <button onclick="sendEmail('Caramel Macchiato')">Order</button>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Tea</h2>
+            <div class="menu-item">
+                <h3>Chai Latte <span class="price">$4.00</span></h3>
+                <p>A spiced tea latte with hints of cinnamon and cardamom.</p>
+                <button onclick="sendEmail('Chai Latte')">Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Earl Grey <span class="price">$3.50</span></h3>
+                <p>A classic black tea flavored with bergamot.</p>
+                <button onclick="sendEmail('Earl Grey')">Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Green Tea <span class="price">$3.00</span></h3>
+                <p>Refreshing and light green tea with delicate flavors.</p>
+                <button onclick="sendEmail('Green Tea')">Order</button>
+            </div>
+        </div>
+
+        <div class="menu-category">
+            <h2>Soft Drinks</h2>
+            <div class="menu-item">
+                <h3>Café Mocha <span class="price">$5.00</span></h3>
+                <p>Chocolate syrup blended with espresso and steamed milk.</p>
+                <button onclick="sendEmail('Café Mocha')">Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Iced Coffee <span class="price">$4.00</span></h3>
+                <p>Chilled coffee served over ice with your choice of milk or cream.</p>
+                <button onclick="sendEmail('Iced Coffee')">Order</button>
+            </div>
+            <div class="menu-item">
+                <h3>Soda <span class="price">$2.50</span></h3>
+                <p>Choose from a variety of classic sodas.</p>
+                <button onclick="sendEmail('Soda')">Order</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendEmail(drinkName) {
+            // Define the endpoint for the server-side script
+            const emailEndpoint = 'send_email.php';
+
+            // Create a new FormData object
+            const formData = new FormData();
+            formData.append('drinkName', drinkName);
+
+            // Send a POST request with the FormData
